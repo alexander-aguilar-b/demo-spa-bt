@@ -13,6 +13,7 @@ phases:
     commands:
       - echo Build started
       - npm run build
+      - aws s3 cp dist s3://host-spa-bt-01 --recursive
   post_build:
     commands:
       - echo Build completed
