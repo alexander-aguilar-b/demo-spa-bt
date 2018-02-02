@@ -1,20 +1,26 @@
 version: 0.2
 
+environment_variables:
+    plaintext:
+        S3_BUCKET: "demo-code-build-bt"
+        BUILD_ENV: "prod"
 
 phases:
   install:
     commands:
       - echo Installing npm dependencies
+      - npm install
+      - npm install -g @angular/cli
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
-      - npm install
   build:
     commands:
-      - echo Build started on `date`      
+      - echo Build started on `date`
       - ng build --prod
   post_build:
     commands:
+      - aws s3 cp dist s3://${S3_BUCKET} --recursive
       - echo Build completed on `date`
 artifacts:
   files:
