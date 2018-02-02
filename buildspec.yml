@@ -16,12 +16,10 @@ phases:
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
-      - echo Build started on `date`
       - npm run build
   post_build:
     commands:
       - aws s3 cp dist s3://${S3_BUCKET} --recursive
-      - echo Build completed on `date`
 artifacts:
   files:
     - '**/*'
