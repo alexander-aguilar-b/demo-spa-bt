@@ -38,13 +38,13 @@ env:
 phases:
     install:
         commands:
-        - sudo npm install -g @angular/cli@1.5.0
+        - sudo npm install -g @angular/cli
         - npm install @angular-devkit/core --save-dev
         - npm install
     build:
         commands:
         # Builds Angular application.
-        - ng build --prod
+        - ng build --${BUILD_ENV}
     post_build:
         commands:
         # Clear S3 bucket.
