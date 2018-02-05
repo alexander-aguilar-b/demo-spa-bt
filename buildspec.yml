@@ -9,14 +9,16 @@ phases:
   install:
     commands:
       - echo Installing npm dependencies
+      - sudo yum update
+      - sudo npm install -g @angular/cli
       - npm install
-      - npm install -g @angular/cli
+
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
-      - npm run build
+      - npm build --prod
   post_build:
     commands:
       - aws s3 cp dist s3://${S3_BUCKET} --recursive
