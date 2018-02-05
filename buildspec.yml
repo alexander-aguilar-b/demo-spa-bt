@@ -53,6 +53,7 @@ phases:
     build:
         commands:
         # Builds Angular application.
+        - npm install
         - echo Build started on `date`
         - ng build --${BUILD_ENV}
     post_build:
