@@ -44,6 +44,7 @@ phases:
         commands:
         # Builds Angular application.
         - npm install
+        - sudo npm install -g @angular-devkit/core
         - ng build --prod
     post_build:
         commands:
