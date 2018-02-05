@@ -38,13 +38,13 @@ env:
 phases:
     install:
         commands:
-        - sudo npm install -g @angular/cli
+        - sudo npm install -g @angular/cli@1.5.0
         - npm install
     build:
         commands:
         # Builds Angular application.
         - npm install
-        - sudo npm install -g @angular-devkit/core
+        #- sudo npm install -g @angular-devkit/core
         - ng build --prod
     post_build:
         commands:
